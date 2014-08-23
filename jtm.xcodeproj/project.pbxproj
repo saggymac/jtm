@@ -12,6 +12,7 @@
 		CDE4A47A19A84986008EA1EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDE4A47919A84986008EA1EA /* Images.xcassets */; };
 		CDE4A47D19A84986008EA1EA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDE4A47B19A84986008EA1EA /* MainMenu.xib */; };
 		CDE4A48919A84987008EA1EA /* jtmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4A48819A84987008EA1EA /* jtmTests.swift */; };
+		CDE4A49319A84A18008EA1EA /* NSMenuItem+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4A49219A84A18008EA1EA /* NSMenuItem+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		CDE4A48219A84987008EA1EA /* jtmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jtmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE4A48719A84987008EA1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDE4A48819A84987008EA1EA /* jtmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jtmTests.swift; sourceTree = "<group>"; };
+		CDE4A49219A84A18008EA1EA /* NSMenuItem+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				CDE4A47719A84986008EA1EA /* AppDelegate.swift */,
+				CDE4A49219A84A18008EA1EA /* NSMenuItem+Helpers.swift */,
 				CDE4A47919A84986008EA1EA /* Images.xcassets */,
 				CDE4A47B19A84986008EA1EA /* MainMenu.xib */,
 				CDE4A47319A84986008EA1EA /* Supporting Files */,
@@ -209,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDE4A47819A84986008EA1EA /* AppDelegate.swift in Sources */,
+				CDE4A49319A84A18008EA1EA /* NSMenuItem+Helpers.swift in Sources */,
 				CDE4A47619A84986008EA1EA /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
