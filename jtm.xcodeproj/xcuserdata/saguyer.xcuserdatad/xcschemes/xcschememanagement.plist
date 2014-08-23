@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>jtm.preferences.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>jtm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>CD5B384219A84EC9005ECF44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD5B385F19A853B1005ECF44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CDE4A46F19A84986008EA1EA</key>
 		<dict>
 			<key>primary</key>

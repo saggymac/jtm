@@ -7,11 +7,13 @@
 //
 
 import Cocoa
+import PreferencePanes
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var statusBarItem: NSStatusItem! = nil
     @IBOutlet weak var window: NSWindow!
+    @IBOutlet var prefsController: JTMPreferencesController!
 
     
     func quitApplication ( sender:AnyObject ) {
@@ -24,11 +26,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activateIgnoringOtherApps( true)
     }
     
+    func showPreferences ( sender: AnyObject ) {
+        if self.prefsController == nil {
+            NSBundle.mainBundle().loadNibNamed( "JTMPreferences", owner: self, topLevelObjects: nil)
+        }
+        
+        self.prefsController.panel.makeKeyAndOrderFront( sender)
+    }
+    
     
     func makeStatusBarMenuItems() -> Array<NSMenuItem!> {
         return [
             NSMenuItem( title:"About JTM...", target:nil, action:"orderFrontStandardAboutPanel:", keyEquivalent:""),
-            NSMenuItem( title:"Preferences...", target:nil, action:"", keyEquivalent:","),
+            NSMenuItem( title:"Preferences...", target:self, action:"showPreferences:", keyEquivalent:","),
             NSMenuItem.separatorItem(),
             NSMenuItem( title:"Tasks", target:self, action:"showTasksWindow:", keyEquivalent:"t"),
             NSMenuItem.separatorItem(),

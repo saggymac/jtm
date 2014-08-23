@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD5B389A19A8B87A005ECF44 /* JTMPreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B389919A8B87A005ECF44 /* JTMPreferencesController.swift */; };
+		CD5B389C19A8B89B005ECF44 /* JTMPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5B389B19A8B89B005ECF44 /* JTMPreferences.xib */; };
+		CD5B389E19A8BCC9005ECF44 /* AccountPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B389D19A8BCC9005ECF44 /* AccountPane.swift */; };
+		CD5B38A019A8BD2A005ECF44 /* ProjectsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B389F19A8BD2A005ECF44 /* ProjectsPane.swift */; };
+		CD5B38A219A8CC58005ECF44 /* ProjectsPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5B38A119A8CC58005ECF44 /* ProjectsPane.xib */; };
+		CD5B38A419A8CC7D005ECF44 /* AccountPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5B38A319A8CC7D005ECF44 /* AccountPane.xib */; };
 		CDE4A47619A84986008EA1EA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4A47519A84986008EA1EA /* main.swift */; };
 		CDE4A47819A84986008EA1EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4A47719A84986008EA1EA /* AppDelegate.swift */; };
 		CDE4A47A19A84986008EA1EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDE4A47919A84986008EA1EA /* Images.xcassets */; };
@@ -26,6 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD5B389919A8B87A005ECF44 /* JTMPreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTMPreferencesController.swift; sourceTree = "<group>"; };
+		CD5B389B19A8B89B005ECF44 /* JTMPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JTMPreferences.xib; sourceTree = "<group>"; };
+		CD5B389D19A8BCC9005ECF44 /* AccountPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPane.swift; sourceTree = "<group>"; };
+		CD5B389F19A8BD2A005ECF44 /* ProjectsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPane.swift; sourceTree = "<group>"; };
+		CD5B38A119A8CC58005ECF44 /* ProjectsPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsPane.xib; sourceTree = "<group>"; };
+		CD5B38A319A8CC7D005ECF44 /* AccountPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountPane.xib; sourceTree = "<group>"; };
 		CDE4A47019A84986008EA1EA /* jtm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE4A47419A84986008EA1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDE4A47519A84986008EA1EA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -56,9 +68,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD5B385A19A85209005ECF44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD5B389819A8B856005ECF44 /* prefs */ = {
+			isa = PBXGroup;
+			children = (
+				CD5B389919A8B87A005ECF44 /* JTMPreferencesController.swift */,
+				CD5B389B19A8B89B005ECF44 /* JTMPreferences.xib */,
+				CD5B389D19A8BCC9005ECF44 /* AccountPane.swift */,
+				CD5B38A319A8CC7D005ECF44 /* AccountPane.xib */,
+				CD5B389F19A8BD2A005ECF44 /* ProjectsPane.swift */,
+				CD5B38A119A8CC58005ECF44 /* ProjectsPane.xib */,
+			);
+			path = prefs;
+			sourceTree = "<group>";
+		};
 		CDE4A46719A84986008EA1EA = {
 			isa = PBXGroup;
 			children = (
+				CD5B385A19A85209005ECF44 /* Frameworks */,
 				CDE4A47219A84986008EA1EA /* jtm */,
 				CDE4A48519A84987008EA1EA /* jtmTests */,
 				CDE4A47119A84986008EA1EA /* Products */,
@@ -77,6 +110,7 @@
 		CDE4A47219A84986008EA1EA /* jtm */ = {
 			isa = PBXGroup;
 			children = (
+				CD5B389819A8B856005ECF44 /* prefs */,
 				CDE4A47719A84986008EA1EA /* AppDelegate.swift */,
 				CDE4A49219A84A18008EA1EA /* NSMenuItem+Helpers.swift */,
 				CDE4A47919A84986008EA1EA /* Images.xcassets */,
@@ -192,8 +226,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD5B38A419A8CC7D005ECF44 /* AccountPane.xib in Resources */,
+				CD5B389C19A8B89B005ECF44 /* JTMPreferences.xib in Resources */,
 				CDE4A47A19A84986008EA1EA /* Images.xcassets in Resources */,
 				CDE4A47D19A84986008EA1EA /* MainMenu.xib in Resources */,
+				CD5B38A219A8CC58005ECF44 /* ProjectsPane.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +250,9 @@
 			files = (
 				CDE4A47819A84986008EA1EA /* AppDelegate.swift in Sources */,
 				CDE4A49319A84A18008EA1EA /* NSMenuItem+Helpers.swift in Sources */,
+				CD5B389E19A8BCC9005ECF44 /* AccountPane.swift in Sources */,
+				CD5B38A019A8BD2A005ECF44 /* ProjectsPane.swift in Sources */,
+				CD5B389A19A8B87A005ECF44 /* JTMPreferencesController.swift in Sources */,
 				CDE4A47619A84986008EA1EA /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,6 +441,7 @@
 				CDE4A48E19A84987008EA1EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CDE4A48F19A84987008EA1EA /* Build configuration list for PBXNativeTarget "jtmTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +450,7 @@
 				CDE4A49119A84987008EA1EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
