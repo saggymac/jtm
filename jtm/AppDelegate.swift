@@ -21,12 +21,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func showTasksWindow ( sender: AnyObject ) {
         self.window.orderFront( sender);
         self.window.makeKeyWindow();
+        NSApp.activateIgnoringOtherApps( true)
     }
     
     
     func makeStatusBarMenuItems() -> Array<NSMenuItem!> {
         return [
-            NSMenuItem( title:"About JTM...", target:nil, action:"", keyEquivalent:""),
+            NSMenuItem( title:"About JTM...", target:nil, action:"orderFrontStandardAboutPanel:", keyEquivalent:""),
             NSMenuItem( title:"Preferences...", target:nil, action:"", keyEquivalent:","),
             NSMenuItem.separatorItem(),
             NSMenuItem( title:"Tasks", target:self, action:"showTasksWindow:", keyEquivalent:"t"),
