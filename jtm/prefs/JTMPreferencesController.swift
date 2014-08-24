@@ -12,15 +12,30 @@ class JTMPreferencesController : NSObject {
     
     @IBOutlet var panel: NSPanel!
     
-    @IBOutlet weak var accountPane: AccountPane!
-    @IBOutlet weak var projectsPane: ProjectsPane!
+    @IBOutlet var accountPane: AccountPaneController!
+    @IBOutlet var projectsPane: ProjectsPaneController!
     
+    @IBOutlet weak var toolbar: NSToolbar!
     
-    func showPane( pane: NSView ) {
-        pane.frame = self.panel.contentView.bounds
-        self.panel.contentView.addSubview( pane)
+    func showPane( controller: NSViewController ) {
+//        controller.view.frame = self.panel.contentView.bounds
+        
+        
+        self.panel.contentView.addSubview( controller.view)
+        
+        var views: [NSObject:AnyObject]! = [ "pane" : controller.view ]
+        
+        var constraints = NSLayoutConstraint.constraintsWithVisualFormat( "H:|-[pane]-|", options:NSLayoutFormatOptions(0), metrics: nil, views: views)
+        self.panel.contentView.addConstraints( constraints)
+        constraints = NSLayoutConstraint.constraintsWithVisualFormat( "V:|-[pane]-|", options:NSLayoutFormatOptions(0), metrics: nil, views: views)
+        self.panel.contentView.addConstraints( constraints)
     }
     
+    
+    override func awakeFromNib() {
+        self.toolbar.selectedItemIdentifier = "Account"
+        activateAccountPane( self)
+    }
     
     @IBAction func activateAccountPane(sender: AnyObject) {
         

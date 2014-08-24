@@ -8,6 +8,6 @@
 
 import Cocoa
 
-class ProjectsPane : NSView {
+class ProjectsPaneController : NSViewController {
     
 }

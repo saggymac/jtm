@@ -7,12 +7,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="JTMPreferencesController" customModule="jtm" customModuleProvider="target">
             <connections>
-                <outlet property="projectsPane" destination="c22-O7-iKe" id="w3y-9U-Urh"/>
+                <outlet property="projectsPane" destination="Ovs-Ra-f8W" id="s43-Rw-4TU"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="ProjectsPane" customModule="jtm" customModuleProvider="target">
+        <viewController id="Ovs-Ra-f8W" customClass="ProjectsPaneController" customModule="jtm" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="jgX-kf-ssa"/>
+            </connections>
+        </viewController>
+        <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>

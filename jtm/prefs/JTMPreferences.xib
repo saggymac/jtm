@@ -46,6 +46,7 @@
         <customObject id="o6g-Y5-c2z" customClass="JTMPreferencesController" customModule="jtm" customModuleProvider="target">
             <connections>
                 <outlet property="panel" destination="6Ln-RE-3hc" id="ck6-SA-rTw"/>
+                <outlet property="toolbar" destination="vnL-p1-wGj" id="YDM-CV-AbM"/>
             </connections>
         </customObject>
     </objects>
