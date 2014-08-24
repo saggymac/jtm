@@ -14,6 +14,18 @@ class AccountPaneController : NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var passTextField: NSSecureTextField!
     @IBOutlet weak var verifyButton: NSButton!
     
+    @IBAction func verifyAction(sender: AnyObject) {
+        // TODO: this is where we need to start validating against the JIRA API
+        
+        let client = JIRAClient( host: "scotts-mbp.home:2990")
+        
+        client.authenticate( self.userTextField.stringValue, pass: self.passTextField.stringValue ) { (let object, let error) in
+
+        }
+        
+    }
+    
+    
     func textFieldIsEmpty ( textField: NSTextField ) -> Bool {
         return textField.stringValue.lengthOfBytesUsingEncoding( NSASCIIStringEncoding) == 0
     }

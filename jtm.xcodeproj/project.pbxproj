@@ -13,6 +13,7 @@
 		CD5B38A019A8BD2A005ECF44 /* ProjectsPane.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5B389F19A8BD2A005ECF44 /* ProjectsPane.swift */; };
 		CD5B38A219A8CC58005ECF44 /* ProjectsPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5B38A119A8CC58005ECF44 /* ProjectsPane.xib */; };
 		CD5B38A419A8CC7D005ECF44 /* AccountPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD5B38A319A8CC7D005ECF44 /* AccountPane.xib */; };
+		CD80C2A819AA0EBA0042FF24 /* JIRAClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80C2A719AA0EBA0042FF24 /* JIRAClient.swift */; };
 		CDE4A47619A84986008EA1EA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4A47519A84986008EA1EA /* main.swift */; };
 		CDE4A47819A84986008EA1EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE4A47719A84986008EA1EA /* AppDelegate.swift */; };
 		CDE4A47A19A84986008EA1EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDE4A47919A84986008EA1EA /* Images.xcassets */; };
@@ -38,6 +39,7 @@
 		CD5B389F19A8BD2A005ECF44 /* ProjectsPane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsPane.swift; sourceTree = "<group>"; };
 		CD5B38A119A8CC58005ECF44 /* ProjectsPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectsPane.xib; sourceTree = "<group>"; };
 		CD5B38A319A8CC7D005ECF44 /* AccountPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountPane.xib; sourceTree = "<group>"; };
+		CD80C2A719AA0EBA0042FF24 /* JIRAClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JIRAClient.swift; sourceTree = "<group>"; };
 		CDE4A47019A84986008EA1EA /* jtm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jtm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE4A47419A84986008EA1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDE4A47519A84986008EA1EA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 			path = prefs;
 			sourceTree = "<group>";
 		};
+		CD80C2A619AA0E9B0042FF24 /* jira */ = {
+			isa = PBXGroup;
+			children = (
+				CD80C2A719AA0EBA0042FF24 /* JIRAClient.swift */,
+			);
+			path = jira;
+			sourceTree = "<group>";
+		};
 		CDE4A46719A84986008EA1EA = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +120,7 @@
 		CDE4A47219A84986008EA1EA /* jtm */ = {
 			isa = PBXGroup;
 			children = (
+				CD80C2A619AA0E9B0042FF24 /* jira */,
 				CD5B389819A8B856005ECF44 /* prefs */,
 				CDE4A47719A84986008EA1EA /* AppDelegate.swift */,
 				CDE4A49219A84A18008EA1EA /* NSMenuItem+Helpers.swift */,
@@ -248,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD80C2A819AA0EBA0042FF24 /* JIRAClient.swift in Sources */,
 				CDE4A47819A84986008EA1EA /* AppDelegate.swift in Sources */,
 				CDE4A49319A84A18008EA1EA /* NSMenuItem+Helpers.swift in Sources */,
 				CD5B389E19A8BCC9005ECF44 /* AccountPane.swift in Sources */,
