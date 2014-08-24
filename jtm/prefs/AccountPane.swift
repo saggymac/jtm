@@ -10,17 +10,27 @@ import Cocoa
 
 class AccountPaneController : NSViewController, NSTextFieldDelegate {
     
+    @IBOutlet weak var hostTextField: NSTextField!
     @IBOutlet weak var userTextField: NSTextField!
     @IBOutlet weak var passTextField: NSSecureTextField!
     @IBOutlet weak var verifyButton: NSButton!
+    @IBOutlet weak var verifiedIcon: NSImageView!
+    
+    // TODO: restore the view with persisted data if there is any
+    
+    override func awakeFromNib() {
+        self.verifiedIcon.hidden = true
+    }
+
     
     @IBAction func verifyAction(sender: AnyObject) {
-        // TODO: this is where we need to start validating against the JIRA API
-        
-        let client = JIRAClient( host: "scotts-mbp.home:2990")
+        // "scotts-mbp.home:2990"
+        let client = JIRAClient( host: hostTextField.stringValue)
         
         client.authenticate( self.userTextField.stringValue, pass: self.passTextField.stringValue ) { (let object, let error) in
 
+            // TODO: let the other Projects pane be active
+            self.verifiedIcon.hidden = false
         }
         
     }

@@ -82,7 +82,6 @@ class SimpleDownloader {
             
             if let cp = self.credsProvider {
                 if let token = cp.basicAuthToken() {
-                    println( "adding token: " + token)
                     headers["Authorization"] = token
                 }
             }
@@ -130,6 +129,7 @@ enum JIRAErrorCodes: Int {
 
 
 class JIRAError {
+    
     class var errorDomain: String {
         return "JIRAClient"
     }
@@ -188,9 +188,6 @@ public class JIRAClient {
         credentials = CredentialsProvider( self.host!, user, pass)
         
         let urlString = "http://" + self.host! + self.apiPath + "/2/user?username=" + user
-        
-        println(urlString)
-        
         let url = NSURL( string: urlString)
         
         let downloader = SimpleDownloader( url)
