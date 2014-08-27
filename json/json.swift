@@ -200,15 +200,17 @@ public class JSDecoder {
 
     func endContainer( context: JSContext ) -> Bool {
 
-        var objContext = context.pop()
+        var objContext = context.pop()!
 
         if var top = context.top() {
             switch top.state {
             case .JSObject:
                 if var obj = top.accum as? JSObject {
                     if let key = top.str {
-                        obj[ key] = objContext?.accum
+                        
+                        obj[ key] = ( (objContext.array != nil) ? objContext.array : objContext.accum )
                         top.str = nil
+                        top.accum = obj
                         var newState = JSState( state: .Comma, handler:commaHandler)
                         context.push( newState)
                         return true
@@ -217,15 +219,22 @@ public class JSDecoder {
 
             case .JSArray:
                 if var arr = top.accum as? JSArray {
-                    arr.append( objContext?.accum)
+                    arr.append( ( (objContext.array != nil) ? objContext.array : objContext.accum ))
                     var newState = JSState( state: .Comma, handler:commaHandler)
                     context.push( newState)
                     return true
                 }
 
+
+            case .Value:
+                context.pop()
+                context.push( objContext)
+                return endContainer( context)
+
+
             case .Init:
-                top.array = objContext?.array
-                top.accum = objContext?.accum
+                top.array = objContext.array
+                top.accum = objContext.accum
                 top.state = .Final
                 top.handler = finalHandler
                 return true
@@ -327,7 +336,7 @@ public class JSDecoder {
 
 
     func literalHandler( context: JSContext, char: Character ) -> Bool {
-        
+        println( "\(__FUNCTION__)(\(char))")
 
         if var top = context.top() {
             let literal = top.accum! as String
@@ -357,10 +366,12 @@ public class JSDecoder {
                 
             }
 
-            if  literal.hasPrefix( top.str!) {
-                println( "unexpected character \(char) while scanning for \(top.accum)")
+            if  literal.hasPrefix( top.str!) {                
                 return true
-            } 
+            } else {
+                println( "unexpected character \(char) while scanning for \(top.accum)")
+                return false
+            }
         }
         
         return false        
@@ -379,10 +390,17 @@ public class JSDecoder {
             context.push( strContext)
 
         case "{":
-            break // new object
-
+            var objContext = JSState( state: JSStateType.JSObject, objectHandler)
+            objContext.accum = JSObject()
+            context.push( objContext)
+        
         case "[":
-            break // new array
+            var arrContext = JSState( state: JSStateType.JSArray, commaHandler)
+            arrContext.array = JSArray()
+            context.push( arrContext)
+            var valContext = JSState( state: JSStateType.Value, valueHandler)
+            context.push( valContext)
+
 
         case "t":
             var ctxt = JSState( state: .JSNull, handler: literalHandler)
