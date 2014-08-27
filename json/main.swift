@@ -8,7 +8,7 @@
 
 import Foundation
 
-let data = NSData( contentsOfFile: "/Users/saguyer/Documents/Shared Playground Data/test.json")
+let data = NSData( contentsOfFile: "/Users/saguyer/src/json/test/simpleArray.json")
 let p = JSDecoder()	
 if let result = p.decode( data) {
     println( "RESULT: \(result)")    

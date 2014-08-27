@@ -65,6 +65,7 @@ class JSState: Printable {
     var state: JSStateType
     var str: String?
     var accum: Any? // Any of the value types: object, array, string, number
+    var array: JSArray?
     var handler: JSHandler
     
     init( state aState: JSStateType, handler h: JSHandler ) {
@@ -72,6 +73,7 @@ class JSState: Printable {
         str = nil
         accum = nil
         handler = h
+        array = nil
     }
 
     var description : String {
@@ -159,7 +161,9 @@ public class JSDecoder {
         // Now we roll up the data
 
         var valueContext = context.pop()
+        
         if var top = context.top() {
+            
             switch top.state {
             case .JSObject:
                 if var dict = top.accum as? JSObject {
@@ -174,8 +178,12 @@ public class JSDecoder {
                 }                
 
             case .JSArray:
-                println( "\(__FUNCTION__),\(__LINE__) -- not implemented yet")            
-                return false
+
+                top.array?.append( valueContext?.accum)
+                var newState = JSState( state: .Comma, handler:commaHandler)
+                context.push( newState)                                      
+                return true
+
 
             default:
                 return false
@@ -187,15 +195,12 @@ public class JSDecoder {
     }
     
     
-    func endArray( context: JSContext ) -> Bool {
-        println( "\(__FUNCTION__),\(__LINE__) -- not implemented yet")
-        return false
-    }
+ 
 
 
-    func endObject( context: JSContext ) -> Bool {
+    func endContainer( context: JSContext ) -> Bool {
 
-        let objContext = context.pop()
+        var objContext = context.pop()
 
         if var top = context.top() {
             switch top.state {
@@ -203,6 +208,7 @@ public class JSDecoder {
                 if var obj = top.accum as? JSObject {
                     if let key = top.str {
                         obj[ key] = objContext?.accum
+                        top.str = nil
                         var newState = JSState( state: .Comma, handler:commaHandler)
                         context.push( newState)
                         return true
@@ -210,11 +216,15 @@ public class JSDecoder {
                 }                
 
             case .JSArray:
-                println( "\(__FUNCTION__,__LINE__) -- not implemented yet")
-                return false
-
+                if var arr = top.accum as? JSArray {
+                    arr.append( objContext?.accum)
+                    var newState = JSState( state: .Comma, handler:commaHandler)
+                    context.push( newState)
+                    return true
+                }
 
             case .Init:
+                top.array = objContext?.array
                 top.accum = objContext?.accum
                 top.state = .Final
                 top.handler = finalHandler
@@ -240,6 +250,7 @@ public class JSDecoder {
         // either for a dictionary or an array. 
 
         switch char {
+            
         case ",":
             context.pop() // pop this comma state
             if let top = context.top() {
@@ -247,23 +258,21 @@ public class JSDecoder {
                 case .JSObject:
                     top.handler = keyHandler
                 case .JSArray:
-                    top.handler = valueHandler
+                    var valContext = JSState( state: JSStateType.Value, handler:valueHandler)
+                    context.push( valContext)
                 default:
                     return false
                 }
             }
     
 
-        // TODO: BUG this isn't right I don't think
         case "}":
             context.pop()        
-            return endObject( context)
+            return endContainer( context)
 
-
-        // TODO: BUG this isn't right I don't think
         case "]":
             context.pop()
-            return endArray( context)
+            return endContainer( context)
 
 
         case let s where whitespace(s):
@@ -403,7 +412,7 @@ public class JSDecoder {
         switch char {
 
         case "}":
-            return endObject( context)
+            return endContainer( context)
         
         case "\"":
             var keyCtxt = JSState( state: JSStateType.Key, keyHandler)
@@ -421,30 +430,29 @@ public class JSDecoder {
         
         return true
     }
-    
-    
-    func arrayHandler( context: JSContext, char: Character ) -> Bool {
-        println( "\(__FUNCTION__),\(__LINE__) -- not implemented yet")
-        return false
-    }
-    
+        
 
  
     // In the initial state, we are eaching whitespace and looking for an
     // opening "{" or "[" character
     //
     func initialHandler( context: JSContext, char: Character ) -> Bool {
-        println( "\(__FUNCTION__)(\(char))")        
+        println( "\(__FUNCTION__)(\(char))")
+ 
         switch char {
+
         case "{":
             var objContext = JSState( state: JSStateType.JSObject, objectHandler)
             objContext.accum = JSObject()
             context.push( objContext)
         
         case "[":
-            var arrContext = JSState( state: JSStateType.JSArray, arrayHandler)
-            arrContext.accum = JSArray()
+            var arrContext = JSState( state: JSStateType.JSArray, commaHandler)
+            arrContext.array = JSArray()
             context.push( arrContext)
+            var valContext = JSState( state: JSStateType.Value, valueHandler)
+            context.push( valContext)
+
             
         case let s where whitespace(s):
             break
@@ -485,7 +493,14 @@ public class JSDecoder {
         var result: Any? = nil
         if let currentState = ctxt.top() {
             if ( currentState.state == JSStateType.Final ) {
-                result = currentState.accum
+                
+                if let a = currentState.array {
+                    result = a
+                }
+
+                if let d = currentState.accum {
+                    result = d
+                }
             }
         }
 
