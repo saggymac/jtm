@@ -326,6 +326,36 @@ public class JSDecoder {
     }
 
 
+    
+
+    func nullHandler( context: JSContext, char: Character ) -> Bool {
+        println( "\(__FUNCTION__)(\(char))")
+        
+        let literal = "null"
+
+        if var top = context.top() {
+            top.append( char)
+
+            if literal == top.str! {
+                context.pop() // remove the null context
+                if var top = context.top() {
+                    // store nil value in the value context 
+                    // and let the endValue() function clean up
+                    top.accum = nil 
+                    return endValue( context)                    
+                }
+                
+            }
+
+            if  literal.hasPrefix( top.str!) {
+                return true
+            } 
+        }
+        
+        return false
+    }
+
+
     func valueHandler( context: JSContext, char: Character ) -> Bool {
         println( "\(__FUNCTION__)(\(char))")
 
@@ -349,9 +379,13 @@ public class JSDecoder {
             break // new bool(false)
 
         case "n":
-            break // null
+            var nullContext = JSState( state: .JSNull, handler: nullHandler)
+            nullContext.str = "n"
+            context.push( nullContext)
+            
 
         // TODO: add some recognizers for number
+        
 
         case let s where whitespace(s):
             break

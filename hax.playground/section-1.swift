@@ -2,29 +2,15 @@
 
 import Cocoa
 
-var str = "Hello, playground"
-str.append( "!" as Character)
-str
 
-struct Test {
-    var str: String?
-    
-    init() {
-        str = ""
-    }
+let t = "null"
+
+if t.hasPrefix( "n") {
+    "si"
 }
 
-var t = Test()
-t.str = ""
 
-t.str?.append( "D" as Character)
-t.str?
 
-var list = [ t ]
-
-list.last?.str?.append( "E" as Character)
-
-t.str?
 
 
 
