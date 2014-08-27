@@ -326,34 +326,46 @@ public class JSDecoder {
     }
 
 
-    
-
-    func nullHandler( context: JSContext, char: Character ) -> Bool {
-        println( "\(__FUNCTION__)(\(char))")
+    func literalHandler( context: JSContext, char: Character ) -> Bool {
         
-        let literal = "null"
 
         if var top = context.top() {
+            let literal = top.accum! as String
             top.append( char)
 
             if literal == top.str! {
-                context.pop() // remove the null context
+                context.pop() 
                 if var top = context.top() {
+
+                    switch literal {
+                    case "null":
+                        top.accum = nil
+                    case "true":
+                        top.accum = true
+                    case "false":
+                        top.accum = false
+                    default:
+                        println("unknown literal")
+                        return false
+                    }
+
                     // store nil value in the value context 
                     // and let the endValue() function clean up
-                    top.accum = nil 
+                
                     return endValue( context)                    
                 }
                 
             }
 
             if  literal.hasPrefix( top.str!) {
+                println( "unexpected character \(char) while scanning for \(top.accum)")
                 return true
             } 
         }
         
-        return false
+        return false        
     }
+
 
 
     func valueHandler( context: JSContext, char: Character ) -> Bool {
@@ -373,15 +385,22 @@ public class JSDecoder {
             break // new array
 
         case "t":
-            break // new bool(true)
+            var ctxt = JSState( state: .JSNull, handler: literalHandler)
+            ctxt.accum = "true"
+            ctxt.str = "t"
+            context.push( ctxt)                            
 
         case "f":
-            break // new bool(false)
+            var ctxt = JSState( state: .JSNull, handler: literalHandler)
+            ctxt.accum = "false"
+            ctxt.str = "f"
+            context.push( ctxt)                    
 
         case "n":
-            var nullContext = JSState( state: .JSNull, handler: nullHandler)
-            nullContext.str = "n"
-            context.push( nullContext)
+            var ctxt = JSState( state: .JSNull, handler: literalHandler)
+            ctxt.accum = "null"
+            ctxt.str = "n"
+            context.push( ctxt)
             
 
         // TODO: add some recognizers for number
