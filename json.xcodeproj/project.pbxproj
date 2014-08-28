@@ -8,8 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		CD08536B19ABB2F4003A0552 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08536A19ABB2F4003A0552 /* main.swift */; };
-		CD08537219ABB332003A0552 /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08537119ABB332003A0552 /* json.swift */; };
+		CD3E86C419AE9C51002A5791 /* jsonLib.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3E86C319AE9C51002A5791 /* jsonLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD3E86CE19AE9C51002A5791 /* jsonLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3E86CD19AE9C51002A5791 /* jsonLibTests.swift */; };
+		CD3E86D819AE9C86002A5791 /* jsonLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3E86BF19AE9C51002A5791 /* jsonLib.framework */; };
+		CD3E86DA19AE9D38002A5791 /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3E86D919AE9D38002A5791 /* json.swift */; };
+		CD3E86DD19AE9D56002A5791 /* jsonLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3E86BF19AE9C51002A5791 /* jsonLib.framework */; };
+		CD3E86E719AE9E39002A5791 /* false.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86DF19AE9E39002A5791 /* false.json */; };
+		CD3E86E819AE9E39002A5791 /* nestedArray.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E019AE9E39002A5791 /* nestedArray.json */; };
+		CD3E86E919AE9E39002A5791 /* nestedObject.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E119AE9E39002A5791 /* nestedObject.json */; };
+		CD3E86EA19AE9E39002A5791 /* null.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E219AE9E39002A5791 /* null.json */; };
+		CD3E86EB19AE9E39002A5791 /* objectInArray.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E319AE9E39002A5791 /* objectInArray.json */; };
+		CD3E86EC19AE9E39002A5791 /* simpleArray.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E419AE9E39002A5791 /* simpleArray.json */; };
+		CD3E86ED19AE9E39002A5791 /* simpleObject.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E519AE9E39002A5791 /* simpleObject.json */; };
+		CD3E86EE19AE9E39002A5791 /* true.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E619AE9E39002A5791 /* true.json */; };
+		CD3E86F019AE9E6C002A5791 /* testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD3E86D619AE9C78002A5791 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD08535F19ABB2F4003A0552 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD3E86BE19AE9C51002A5791;
+			remoteInfo = jsonLib;
+		};
+		CD3E86DB19AE9D48002A5791 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD08535F19ABB2F4003A0552 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD3E86BE19AE9C51002A5791;
+			remoteInfo = jsonLib;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CD08536519ABB2F4003A0552 /* CopyFiles */ = {
@@ -26,7 +56,22 @@
 /* Begin PBXFileReference section */
 		CD08536719ABB2F4003A0552 /* json */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = json; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD08536A19ABB2F4003A0552 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		CD08537119ABB332003A0552 /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
+		CD3E86BF19AE9C51002A5791 /* jsonLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jsonLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3E86C219AE9C51002A5791 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD3E86C319AE9C51002A5791 /* jsonLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jsonLib.h; sourceTree = "<group>"; };
+		CD3E86C919AE9C51002A5791 /* jsonLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jsonLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3E86CC19AE9C51002A5791 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD3E86CD19AE9C51002A5791 /* jsonLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonLibTests.swift; sourceTree = "<group>"; };
+		CD3E86D919AE9D38002A5791 /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
+		CD3E86DF19AE9E39002A5791 /* false.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = false.json; sourceTree = "<group>"; };
+		CD3E86E019AE9E39002A5791 /* nestedArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedArray.json; sourceTree = "<group>"; };
+		CD3E86E119AE9E39002A5791 /* nestedObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nestedObject.json; sourceTree = "<group>"; };
+		CD3E86E219AE9E39002A5791 /* null.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = null.json; sourceTree = "<group>"; };
+		CD3E86E319AE9E39002A5791 /* objectInArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = objectInArray.json; sourceTree = "<group>"; };
+		CD3E86E419AE9E39002A5791 /* simpleArray.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simpleArray.json; sourceTree = "<group>"; };
+		CD3E86E519AE9E39002A5791 /* simpleObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simpleObject.json; sourceTree = "<group>"; };
+		CD3E86E619AE9E39002A5791 /* true.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = true.json; sourceTree = "<group>"; };
+		CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testHelpers.swift; sourceTree = "<group>"; };
 		CD9EB96C19ADF10E0003DB17 /* hax.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = hax.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +80,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3E86D819AE9C86002A5791 /* jsonLib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD3E86BB19AE9C51002A5791 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD3E86C619AE9C51002A5791 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3E86DD19AE9D56002A5791 /* jsonLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +107,8 @@
 			children = (
 				CD9EB96C19ADF10E0003DB17 /* hax.playground */,
 				CD08536919ABB2F4003A0552 /* json */,
+				CD3E86C019AE9C51002A5791 /* jsonLib */,
+				CD3E86CA19AE9C51002A5791 /* jsonLibTests */,
 				CD08536819ABB2F4003A0552 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				CD08536719ABB2F4003A0552 /* json */,
+				CD3E86BF19AE9C51002A5791 /* jsonLib.framework */,
+				CD3E86C919AE9C51002A5791 /* jsonLibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,12 +127,74 @@
 			isa = PBXGroup;
 			children = (
 				CD08536A19ABB2F4003A0552 /* main.swift */,
-				CD08537119ABB332003A0552 /* json.swift */,
 			);
 			path = json;
 			sourceTree = "<group>";
 		};
+		CD3E86C019AE9C51002A5791 /* jsonLib */ = {
+			isa = PBXGroup;
+			children = (
+				CD3E86D919AE9D38002A5791 /* json.swift */,
+				CD3E86C319AE9C51002A5791 /* jsonLib.h */,
+				CD3E86C119AE9C51002A5791 /* Supporting Files */,
+			);
+			path = jsonLib;
+			sourceTree = "<group>";
+		};
+		CD3E86C119AE9C51002A5791 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD3E86C219AE9C51002A5791 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD3E86CA19AE9C51002A5791 /* jsonLibTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD3E86DE19AE9E39002A5791 /* testData */,
+				CD3E86CD19AE9C51002A5791 /* jsonLibTests.swift */,
+				CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */,
+				CD3E86CB19AE9C51002A5791 /* Supporting Files */,
+			);
+			path = jsonLibTests;
+			sourceTree = "<group>";
+		};
+		CD3E86CB19AE9C51002A5791 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD3E86CC19AE9C51002A5791 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD3E86DE19AE9E39002A5791 /* testData */ = {
+			isa = PBXGroup;
+			children = (
+				CD3E86DF19AE9E39002A5791 /* false.json */,
+				CD3E86E019AE9E39002A5791 /* nestedArray.json */,
+				CD3E86E119AE9E39002A5791 /* nestedObject.json */,
+				CD3E86E219AE9E39002A5791 /* null.json */,
+				CD3E86E319AE9E39002A5791 /* objectInArray.json */,
+				CD3E86E419AE9E39002A5791 /* simpleArray.json */,
+				CD3E86E519AE9E39002A5791 /* simpleObject.json */,
+				CD3E86E619AE9E39002A5791 /* true.json */,
+			);
+			path = testData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CD3E86BC19AE9C51002A5791 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3E86C419AE9C51002A5791 /* jsonLib.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		CD08536619ABB2F4003A0552 /* json */ = {
@@ -81,11 +208,48 @@
 			buildRules = (
 			);
 			dependencies = (
+				CD3E86D719AE9C78002A5791 /* PBXTargetDependency */,
 			);
 			name = json;
 			productName = json;
 			productReference = CD08536719ABB2F4003A0552 /* json */;
 			productType = "com.apple.product-type.tool";
+		};
+		CD3E86BE19AE9C51002A5791 /* jsonLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD3E86CF19AE9C51002A5791 /* Build configuration list for PBXNativeTarget "jsonLib" */;
+			buildPhases = (
+				CD3E86BA19AE9C51002A5791 /* Sources */,
+				CD3E86BB19AE9C51002A5791 /* Frameworks */,
+				CD3E86BC19AE9C51002A5791 /* Headers */,
+				CD3E86BD19AE9C51002A5791 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jsonLib;
+			productName = jsonLib;
+			productReference = CD3E86BF19AE9C51002A5791 /* jsonLib.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		CD3E86C819AE9C51002A5791 /* jsonLibTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD3E86D219AE9C51002A5791 /* Build configuration list for PBXNativeTarget "jsonLibTests" */;
+			buildPhases = (
+				CD3E86C519AE9C51002A5791 /* Sources */,
+				CD3E86C619AE9C51002A5791 /* Frameworks */,
+				CD3E86C719AE9C51002A5791 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD3E86DC19AE9D48002A5791 /* PBXTargetDependency */,
+			);
+			name = jsonLibTests;
+			productName = jsonLibTests;
+			productReference = CD3E86C919AE9C51002A5791 /* jsonLibTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -97,6 +261,12 @@
 				ORGANIZATIONNAME = "Scott A. Guyer";
 				TargetAttributes = {
 					CD08536619ABB2F4003A0552 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					CD3E86BE19AE9C51002A5791 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					CD3E86C819AE9C51002A5791 = {
 						CreatedOnToolsVersion = 6.0;
 					};
 				};
@@ -114,9 +284,36 @@
 			projectRoot = "";
 			targets = (
 				CD08536619ABB2F4003A0552 /* json */,
+				CD3E86BE19AE9C51002A5791 /* jsonLib */,
+				CD3E86C819AE9C51002A5791 /* jsonLibTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD3E86BD19AE9C51002A5791 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD3E86C719AE9C51002A5791 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3E86ED19AE9E39002A5791 /* simpleObject.json in Resources */,
+				CD3E86EE19AE9E39002A5791 /* true.json in Resources */,
+				CD3E86EA19AE9E39002A5791 /* null.json in Resources */,
+				CD3E86EB19AE9E39002A5791 /* objectInArray.json in Resources */,
+				CD3E86E819AE9E39002A5791 /* nestedArray.json in Resources */,
+				CD3E86E719AE9E39002A5791 /* false.json in Resources */,
+				CD3E86E919AE9E39002A5791 /* nestedObject.json in Resources */,
+				CD3E86EC19AE9E39002A5791 /* simpleArray.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CD08536319ABB2F4003A0552 /* Sources */ = {
@@ -124,11 +321,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD08536B19ABB2F4003A0552 /* main.swift in Sources */,
-				CD08537219ABB332003A0552 /* json.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD3E86BA19AE9C51002A5791 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3E86DA19AE9D38002A5791 /* json.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD3E86C519AE9C51002A5791 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3E86CE19AE9C51002A5791 /* jsonLibTests.swift in Sources */,
+				CD3E86F019AE9E6C002A5791 /* testHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD3E86D719AE9C78002A5791 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD3E86BE19AE9C51002A5791 /* jsonLib */;
+			targetProxy = CD3E86D619AE9C78002A5791 /* PBXContainerItemProxy */;
+		};
+		CD3E86DC19AE9D48002A5791 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD3E86BE19AE9C51002A5791 /* jsonLib */;
+			targetProxy = CD3E86DB19AE9D48002A5791 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CD08536C19ABB2F4003A0552 /* Debug */ = {
@@ -220,6 +446,82 @@
 			};
 			name = Release;
 		};
+		CD3E86D019AE9C51002A5791 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = jsonLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CD3E86D119AE9C51002A5791 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = jsonLib/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CD3E86D319AE9C51002A5791 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = jsonLibTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CD3E86D419AE9C51002A5791 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = jsonLibTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -240,6 +542,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CD3E86CF19AE9C51002A5791 /* Build configuration list for PBXNativeTarget "jsonLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD3E86D019AE9C51002A5791 /* Debug */,
+				CD3E86D119AE9C51002A5791 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CD3E86D219AE9C51002A5791 /* Build configuration list for PBXNativeTarget "jsonLibTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD3E86D319AE9C51002A5791 /* Debug */,
+				CD3E86D419AE9C51002A5791 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

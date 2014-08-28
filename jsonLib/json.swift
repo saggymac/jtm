@@ -45,7 +45,7 @@ enum JSStateType: String, Printable {
     case JSString = "string"
     case JSNumber = "number"
     case JSBool = "bool"
-    case JSNull = "null"
+    case JSLiteral = "literal"
     case Colon = "colon"
     case Comma = "comma"
     case Property = "prop"
@@ -90,8 +90,8 @@ class JSState: Printable {
 
 
 typealias JSHandler = (JSContext, Character) -> Bool
-typealias JSObject = [String : Any?]
-typealias JSArray = Array<Any?>
+public typealias JSObject = [String : Any?]
+public typealias JSArray = Array<Any?>
 
 //
 // This is the state for the parser
@@ -133,7 +133,7 @@ class JSContext {
 
 public class JSDecoder {
 
-    init () {}
+    public init () {}
     
     
     func whitespace( char: Character ) -> Bool {
@@ -218,12 +218,11 @@ public class JSDecoder {
                 }                
 
             case .JSArray:
-                if var arr = top.accum as? JSArray {
-                    arr.append( ( (objContext.array != nil) ? objContext.array : objContext.accum ))
-                    var newState = JSState( state: .Comma, handler:commaHandler)
-                    context.push( newState)
-                    return true
-                }
+                top.array?.append( ( (objContext.array != nil) ? objContext.array : objContext.accum ))
+                var newState = JSState( state: .Comma, handler:commaHandler)
+                context.push( newState)
+                return true
+               
 
 
             case .Value:
@@ -251,9 +250,6 @@ public class JSDecoder {
 
     func commaHandler( context: JSContext, char: Character ) -> Bool {
         println( "\(__FUNCTION__)(\(char))")
-
-        // TODO: if looking for a comma, we could see a comma, or an 
-        // end object character. for either array or object/dicts
 
         // If we got here, we just finished a valueHandler, and that was
         // either for a dictionary or an array. 
@@ -403,19 +399,19 @@ public class JSDecoder {
 
 
         case "t":
-            var ctxt = JSState( state: .JSNull, handler: literalHandler)
+            var ctxt = JSState( state: .JSLiteral, handler: literalHandler)
             ctxt.accum = "true"
             ctxt.str = "t"
             context.push( ctxt)                            
 
         case "f":
-            var ctxt = JSState( state: .JSNull, handler: literalHandler)
+            var ctxt = JSState( state: .JSLiteral, handler: literalHandler)
             ctxt.accum = "false"
             ctxt.str = "f"
             context.push( ctxt)                    
 
         case "n":
-            var ctxt = JSState( state: .JSNull, handler: literalHandler)
+            var ctxt = JSState( state: .JSLiteral, handler: literalHandler)
             ctxt.accum = "null"
             ctxt.str = "n"
             context.push( ctxt)
@@ -538,7 +534,7 @@ public class JSDecoder {
     
     
     
-    func decode( someData: NSData! ) -> Any? {
+    public func decode( someData: NSData! ) -> Any? {
         
         let str = NSString( data: someData, encoding: NSUTF8StringEncoding) as String
         let s = JSScanner( str)

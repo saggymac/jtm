@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import jsonLib
 
-let data = NSData( contentsOfFile: "/Users/saguyer/src/json/test/nestedArray.json")
+let data = NSData( contentsOfFile: "/Users/saguyer/src/json/test/objectInArray.json")
 let p = JSDecoder()	
 if let result = p.decode( data) {
     println( "RESULT: \(result)")    
