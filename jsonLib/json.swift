@@ -532,17 +532,21 @@ public class JSDecoder {
         return true
     }
     
-    
-    
-    public func decode( someData: NSData! ) -> Any? {
+
+    public func decodeChunk( someData: NSData!, continuation: Any? ) -> (continuation: Any?, result: Any?) {
+
+        var ctxt: JSContext
+
+        if ( continuation == nil ) {
+            var startState = JSState( state: JSStateType.Init, handler: initialHandler)
+            ctxt = JSContext( state: startState)
+        } else {
+            ctxt = continuation as JSContext
+        }
         
         let str = NSString( data: someData, encoding: NSUTF8StringEncoding) as String
         let s = JSScanner( str)
         
-        println( "JSON: \(str)")
-        
-        var startState = JSState( state: JSStateType.Init, handler: initialHandler)
-        var ctxt = JSContext( state: startState)
         
         while ( s.canScan() ) {
             let ch = s.readCharacter()
@@ -554,10 +558,10 @@ public class JSDecoder {
                 }
             }
         }
-        
-        
-        // Final state check
+
+
         var result: Any? = nil
+
         if let currentState = ctxt.top() {
             if ( currentState.state == JSStateType.Final ) {
                 
@@ -568,8 +572,20 @@ public class JSDecoder {
                 if let d = currentState.accum {
                     result = d
                 }
+
+                return (nil, result)
+            } else {
+                return (ctxt, nil)
             }
-        }
+        } 
+
+        return (nil,nil) // an error, shouldn't get here
+    }
+    
+    
+    public func decode( someData: NSData! ) -> Any? {
+
+        let (cont, result) = decodeChunk( someData, continuation: nil)
 
         return result
     }

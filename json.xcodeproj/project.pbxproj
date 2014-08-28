@@ -22,6 +22,9 @@
 		CD3E86ED19AE9E39002A5791 /* simpleObject.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E519AE9E39002A5791 /* simpleObject.json */; };
 		CD3E86EE19AE9E39002A5791 /* true.json in Resources */ = {isa = PBXBuildFile; fileRef = CD3E86E619AE9E39002A5791 /* true.json */; };
 		CD3E86F019AE9E6C002A5791 /* testHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */; };
+		CD5E956219AECF7900A283C8 /* streamingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5E956119AECF7900A283C8 /* streamingTests.swift */; };
+		CD5E956519AED63300A283C8 /* simpleMultipart1.json in Resources */ = {isa = PBXBuildFile; fileRef = CD5E956319AED63300A283C8 /* simpleMultipart1.json */; };
+		CD5E956619AED63300A283C8 /* simpleMultipart2.json in Resources */ = {isa = PBXBuildFile; fileRef = CD5E956419AED63300A283C8 /* simpleMultipart2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		CD3E86E519AE9E39002A5791 /* simpleObject.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simpleObject.json; sourceTree = "<group>"; };
 		CD3E86E619AE9E39002A5791 /* true.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = true.json; sourceTree = "<group>"; };
 		CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testHelpers.swift; sourceTree = "<group>"; };
+		CD5E956119AECF7900A283C8 /* streamingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = streamingTests.swift; sourceTree = "<group>"; };
+		CD5E956319AED63300A283C8 /* simpleMultipart1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simpleMultipart1.json; sourceTree = "<group>"; };
+		CD5E956419AED63300A283C8 /* simpleMultipart2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = simpleMultipart2.json; sourceTree = "<group>"; };
 		CD9EB96C19ADF10E0003DB17 /* hax.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = hax.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +160,7 @@
 			children = (
 				CD3E86DE19AE9E39002A5791 /* testData */,
 				CD3E86CD19AE9C51002A5791 /* jsonLibTests.swift */,
+				CD5E956119AECF7900A283C8 /* streamingTests.swift */,
 				CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */,
 				CD3E86CB19AE9C51002A5791 /* Supporting Files */,
 			);
@@ -171,6 +178,8 @@
 		CD3E86DE19AE9E39002A5791 /* testData */ = {
 			isa = PBXGroup;
 			children = (
+				CD5E956319AED63300A283C8 /* simpleMultipart1.json */,
+				CD5E956419AED63300A283C8 /* simpleMultipart2.json */,
 				CD3E86DF19AE9E39002A5791 /* false.json */,
 				CD3E86E019AE9E39002A5791 /* nestedArray.json */,
 				CD3E86E119AE9E39002A5791 /* nestedObject.json */,
@@ -307,9 +316,11 @@
 				CD3E86EA19AE9E39002A5791 /* null.json in Resources */,
 				CD3E86EB19AE9E39002A5791 /* objectInArray.json in Resources */,
 				CD3E86E819AE9E39002A5791 /* nestedArray.json in Resources */,
+				CD5E956519AED63300A283C8 /* simpleMultipart1.json in Resources */,
 				CD3E86E719AE9E39002A5791 /* false.json in Resources */,
 				CD3E86E919AE9E39002A5791 /* nestedObject.json in Resources */,
 				CD3E86EC19AE9E39002A5791 /* simpleArray.json in Resources */,
+				CD5E956619AED63300A283C8 /* simpleMultipart2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +349,7 @@
 			files = (
 				CD3E86CE19AE9C51002A5791 /* jsonLibTests.swift in Sources */,
 				CD3E86F019AE9E6C002A5791 /* testHelpers.swift in Sources */,
+				CD5E956219AECF7900A283C8 /* streamingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +562,7 @@
 				CD3E86D119AE9C51002A5791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD3E86D219AE9C51002A5791 /* Build configuration list for PBXNativeTarget "jsonLibTests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +571,7 @@
 				CD3E86D419AE9C51002A5791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
