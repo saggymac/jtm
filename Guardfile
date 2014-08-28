@@ -2,7 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 
 guard :shell do 
-  watch( /json\/(.*).swift/) do 
+  watch( /jsonLib\/(.*).swift/) do 
     puts ""
     puts ""
     puts "*************** *************** *************** ***************"
@@ -10,6 +10,17 @@ guard :shell do
     puts "*************** *************** *************** ***************"
     puts ""
     puts ""
-    puts `xcodebuild -configuration Debug && $HOME/src/json/build/Debug/json`
+    puts `xcodebuild -sdk macosx10.10 -target jsonLib -configuration Debug`
+  end
+
+  watch( /jsonLibTests\/(.*).swift/) do 
+    puts ""
+    puts ""
+    puts "*************** *************** *************** ***************"
+    puts "*************** *************** *************** ***************"
+    puts "*************** *************** *************** ***************"
+    puts ""
+    puts ""
+    puts `xcodebuild -sdk macosx10.10 -scheme jsonLibTests test`
   end
 end
