@@ -455,14 +455,26 @@ public class JSDecoder {
 
             switch char  {
 
-            case ",": // TODO: Finish these three
-                return endNumberContext( context)                
+            case ",":
+                if endNumberContext( context) {
+                    return commaHandler( context, char: char)
+                } else {
+                    return false
+                }
                 
             case "}":
-                return endNumberContext( context)
+                if endNumberContext( context) {
+                    return commaHandler( context, char: char)
+                } else {
+                    return false
+                }
                 
             case "]":
-                return endNumberContext( context)
+                if endNumberContext( context) {
+                    return commaHandler( context, char: char)
+                } else {
+                    return false
+                }
 
 
             case let s where whitespace( char):
