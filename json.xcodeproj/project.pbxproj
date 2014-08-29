@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CD08536B19ABB2F4003A0552 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD08536A19ABB2F4003A0552 /* main.swift */; };
+		CD38190019B0234300D44975 /* numberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3818FF19B0234300D44975 /* numberTests.swift */; };
+		CD38190219B024A400D44975 /* int.json in Resources */ = {isa = PBXBuildFile; fileRef = CD38190119B024A400D44975 /* int.json */; };
 		CD3E86C419AE9C51002A5791 /* jsonLib.h in Headers */ = {isa = PBXBuildFile; fileRef = CD3E86C319AE9C51002A5791 /* jsonLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD3E86CE19AE9C51002A5791 /* jsonLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3E86CD19AE9C51002A5791 /* jsonLibTests.swift */; };
 		CD3E86D819AE9C86002A5791 /* jsonLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3E86BF19AE9C51002A5791 /* jsonLib.framework */; };
@@ -59,6 +61,8 @@
 /* Begin PBXFileReference section */
 		CD08536719ABB2F4003A0552 /* json */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = json; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD08536A19ABB2F4003A0552 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CD3818FF19B0234300D44975 /* numberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = numberTests.swift; sourceTree = "<group>"; };
+		CD38190119B024A400D44975 /* int.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = int.json; sourceTree = "<group>"; };
 		CD3E86BF19AE9C51002A5791 /* jsonLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = jsonLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3E86C219AE9C51002A5791 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD3E86C319AE9C51002A5791 /* jsonLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jsonLib.h; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				CD3E86DE19AE9E39002A5791 /* testData */,
 				CD3E86CD19AE9C51002A5791 /* jsonLibTests.swift */,
 				CD5E956119AECF7900A283C8 /* streamingTests.swift */,
+				CD3818FF19B0234300D44975 /* numberTests.swift */,
 				CD3E86EF19AE9E6C002A5791 /* testHelpers.swift */,
 				CD3E86CB19AE9C51002A5791 /* Supporting Files */,
 			);
@@ -178,6 +183,7 @@
 		CD3E86DE19AE9E39002A5791 /* testData */ = {
 			isa = PBXGroup;
 			children = (
+				CD38190119B024A400D44975 /* int.json */,
 				CD5E956319AED63300A283C8 /* simpleMultipart1.json */,
 				CD5E956419AED63300A283C8 /* simpleMultipart2.json */,
 				CD3E86DF19AE9E39002A5791 /* false.json */,
@@ -315,6 +321,7 @@
 				CD3E86EE19AE9E39002A5791 /* true.json in Resources */,
 				CD3E86EA19AE9E39002A5791 /* null.json in Resources */,
 				CD3E86EB19AE9E39002A5791 /* objectInArray.json in Resources */,
+				CD38190219B024A400D44975 /* int.json in Resources */,
 				CD3E86E819AE9E39002A5791 /* nestedArray.json in Resources */,
 				CD5E956519AED63300A283C8 /* simpleMultipart1.json in Resources */,
 				CD3E86E719AE9E39002A5791 /* false.json in Resources */,
@@ -347,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD38190019B0234300D44975 /* numberTests.swift in Sources */,
 				CD3E86CE19AE9C51002A5791 /* jsonLibTests.swift in Sources */,
 				CD3E86F019AE9E6C002A5791 /* testHelpers.swift in Sources */,
 				CD5E956219AECF7900A283C8 /* streamingTests.swift in Sources */,

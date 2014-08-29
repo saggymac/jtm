@@ -18,6 +18,10 @@ class JSScanner {
         idx = str.startIndex
     }
     
+
+    // It is up to the caller to make sure they call canScan() before
+    // they call readCharacter() | peekCharacter(). It might hurt otherwise.
+    //
     func canScan() -> Bool {
         return idx < str.endIndex
     }
@@ -34,6 +38,18 @@ class JSScanner {
     
     func index() -> String.Index {
         return idx
+    }
+}
+
+
+extension Character
+{
+    func unicodeScalarCodePoint() -> UInt32
+    {
+        let characterString = String(self)
+        let scalars = characterString.unicodeScalars
+
+        return scalars[scalars.startIndex].value
     }
 }
 
@@ -64,9 +80,9 @@ enum JSStateType: String, Printable {
 class JSState: Printable {
     var state: JSStateType
     var str: String?
-    var accum: Any? // Any of the value types: object, array, string, number
-    var array: JSArray?
+    var accum: Any?      // Any of the value types: object, array, string, number
     var handler: JSHandler
+    var array: JSArray?  // TODO: I had to add this because there were problems append()'ing to an array when stored in Accum 
     
     init( state aState: JSStateType, handler h: JSHandler ) {
         state = aState
@@ -133,14 +149,19 @@ class JSContext {
 
 public class JSDecoder {
 
+    lazy var numberFormatter: NSNumberFormatter = NSNumberFormatter()
+
+
     public init () {}
     
     
     func whitespace( char: Character ) -> Bool {
+
         // NOTE: I found the compiler would infloop if I tried to comma sep
         // the case values
         // Also, this is kinda the suck. But there is no nice set representation that
-        // I have seen for swift yet.
+        // I have seen for swift yet. Might have to build one.
+
         switch char {
         case " ":
             return true
@@ -153,10 +174,24 @@ public class JSDecoder {
         default:
             return false
         }
+
+
+        // TODO: spec defines more valid whitespace chars ... need to add them
+    }
+
+
+    func isnumber( char: Character ) -> Bool {
+        let codepoint = char.unicodeScalarCodePoint()
+        if ( codepoint >= 48 && codepoint < 58 ) {
+            return true
+        } else {
+            return false
+        }
     }
 
 
     func endValue( context: JSContext ) -> Bool {
+
         // We just finished a string, number, or other value type
         // Now we roll up the data
 
@@ -194,8 +229,6 @@ public class JSDecoder {
         return false
     }
     
-    
- 
 
 
     func endContainer( context: JSContext ) -> Bool {
@@ -204,6 +237,7 @@ public class JSDecoder {
 
         if var top = context.top() {
             switch top.state {
+
             case .JSObject:
                 if var obj = top.accum as? JSObject {
                     if let key = top.str {
@@ -215,14 +249,14 @@ public class JSDecoder {
                         context.push( newState)
                         return true
                     }
-                }                
+                }
+           
 
             case .JSArray:
                 top.array?.append( ( (objContext.array != nil) ? objContext.array : objContext.accum ))
                 var newState = JSState( state: .Comma, handler:commaHandler)
                 context.push( newState)
                 return true
-               
 
 
             case .Value:
@@ -246,7 +280,8 @@ public class JSDecoder {
 
         return false
     }
-    
+
+
 
     func commaHandler( context: JSContext, char: Character ) -> Bool {
         println( "\(__FUNCTION__)(\(char))")
@@ -374,6 +409,77 @@ public class JSDecoder {
     }
 
 
+    func convertNumberFromString( num: String ) -> Double? {
+        // JSON itself does not spec a limitation on the length of its
+        // number strings. But Javascript itself is specifies that all decimal
+        // or floating point types are 64bit (IEEE 754). That means Double
+        // in Swift. 
+        //
+        // Note that as with Javascript, this should cover our integral values
+        // with precision up to 53 bits (far more than a Int32, which is the default
+        // size for Int on a armv7 device).
+        //
+
+        if let parsedNumber = numberFormatter.numberFromString( num) {
+            return parsedNumber.doubleValue as Double
+        }
+        else {
+            return nil
+        }
+    }
+
+
+
+    func endNumberContext( context: JSContext ) -> Bool {
+        if let top = context.pop() {
+            if let num = convertNumberFromString( top.str! ) {
+                if var top = context.top() {
+                    top.accum = num
+                    return endValue( context)
+                }      
+            } 
+        }
+
+        return false        
+    }
+
+
+
+    func numberHandler( context: JSContext, char: Character ) -> Bool {
+
+        // This one is going to be different. It is terminated by any of:
+        //  whitespace, ',', '}', ']'
+        //
+
+        if let top = context.top() {
+
+            switch char  {
+
+            case ",": // TODO: Finish these three
+                return endNumberContext( context)                
+                
+            case "}":
+                return endNumberContext( context)
+                
+            case "]":
+                return endNumberContext( context)
+
+
+            case let s where whitespace( char):
+                return endNumberContext( context)
+
+
+            default:
+                if var state = context.top() {
+                    state.append( char)
+                }
+
+            }
+        }
+
+        return true
+    }
+
 
     func valueHandler( context: JSContext, char: Character ) -> Bool {
         println( "\(__FUNCTION__)(\(char))")
@@ -416,8 +522,15 @@ public class JSDecoder {
             ctxt.str = "n"
             context.push( ctxt)
             
+        case "-":
+            var ctxt = JSState( state: .JSNumber, handler: numberHandler)
+            ctxt.str = String(char)            
+            context.push( ctxt)        
 
-        // TODO: add some recognizers for number
+        case let d where isnumber(d):
+            var ctxt = JSState( state: .JSNumber, handler: numberHandler)
+            ctxt.str = String(char) 
+            context.push( ctxt)        
         
 
         case let s where whitespace(s):
@@ -533,6 +646,10 @@ public class JSDecoder {
     }
     
 
+    //
+    // I'm returning continuation:Any? here because I'm trying to hide the details from the user. It
+    // should be opaque to them. Might be a better way to do this in Swift.
+    //
     public func decodeChunk( someData: NSData!, continuation: Any? ) -> (continuation: Any?, result: Any?) {
 
         var ctxt: JSContext

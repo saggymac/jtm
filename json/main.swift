@@ -9,11 +9,37 @@
 import Foundation
 import jsonLib
 
-let data = NSData( contentsOfFile: "/Users/saguyer/src/json/test/objectInArray.json")
+
+var filePath: String = String()
+
+
+let switches = [
+	"-f" : {(arg: String) in filePath = arg}
+]
+
+
+let args = Process.arguments
+var idx = 1
+let max = args.count
+
+while ( idx < max ) {
+	let option = args[idx]
+	if let handler = switches[ option] {
+		idx += 1
+		handler( args[idx])
+	}
+    
+    idx += 1
+}
+
+
+
+let data = NSData( contentsOfFile: filePath)
 let p = JSDecoder()	
 if let result = p.decode( data) {
     println( "RESULT: \(result)")    
 }
+
 
 
 
