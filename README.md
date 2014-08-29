@@ -10,4 +10,5 @@ Build a JSON parser that efficiently just rips through characters as they come. 
 1. Basic buildout is done.
 2. Much more testing needed.
 3. Performance analysis needed.
+4. No encoder yet.
 
