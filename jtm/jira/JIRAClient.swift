@@ -159,7 +159,7 @@ public typealias JIRACallback = ((Dictionary<String,AnyObject>?,NSError?)->())
 public class JIRAClient {
     
     var host: String? = nil
-    let apiPath = "/jira/rest/api"
+    let apiPath = "/rest/api"
     var credentials: CredentialsProvider?
 
     
